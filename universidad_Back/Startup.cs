@@ -51,6 +51,15 @@ namespace universidad_Back
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "universidad_Back v1"));
             }
+            else
+            {
+                app.UseCors(options =>
+                {
+                    options.WithOrigins("https://univ.azurewebsites.net");
+                    options.AllowAnyMethod();
+                    options.AllowAnyHeader();
+                });
+            }
 
             app.UseHttpsRedirection();
 
